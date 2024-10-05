@@ -5,7 +5,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TabProvider, useTabContext } from "@/context/TabContext";
+import { TabProvider, useTabContext } from "../../context/TabContext";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
