@@ -1,13 +1,14 @@
-// app/home/page.tsx
+// src/app/home/page.tsx
 'use client'
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent } from '@/components/ui/tabs';
 import CreateInfluencer from '@/components/home/create-influencer';
 import InfluencerList from '@/components/home/influencer-list';
 import Gallery from '@/components/home/gallery';
+import { useTabContext } from '@/context/TabContext';
 
 // Define the Influencer type
 interface Influencer {
@@ -17,6 +18,7 @@ interface Influencer {
 
 export default function HomePage() {
   const router = useRouter();
+  const { activeTab } = useTabContext();
   // Initialize influencers state with the correct type
   const [influencers, setInfluencers] = React.useState<Influencer[]>([]);
   const [gallery, setGallery] = React.useState<{ influencer: Influencer; scenario: string; prompt: string }[]>([]);
@@ -39,13 +41,7 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <Tabs defaultValue="create" className="w-full mb-6">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="create" className="text-lg sm:text-xl">Create</TabsTrigger>
-            <TabsTrigger value="influencers" className="text-lg sm:text-xl">Influencers</TabsTrigger>
-            <TabsTrigger value="gallery" className="text-lg sm:text-xl">Gallery</TabsTrigger>
-          </TabsList>
-          
+        <Tabs defaultValue={activeTab} className="w-full mb-6">
           <TabsContent value="create">
             <CreateInfluencer 
               influencers={influencers} 
