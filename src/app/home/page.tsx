@@ -41,7 +41,7 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <Tabs defaultValue={activeTab} className="w-full mb-6">
+        <Tabs value={activeTab} className="w-full mb-6">
           <TabsContent value="create">
             <CreateInfluencer 
               influencers={influencers} 
