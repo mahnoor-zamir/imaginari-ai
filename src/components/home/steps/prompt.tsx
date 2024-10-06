@@ -1,10 +1,7 @@
 // components/home/steps/PromptStep.tsx
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Sparkles } from 'lucide-react';
+import { Search, Sparkles } from 'lucide-react';
+import Image from 'next/image';
 
 interface PromptStepProps {
   prompt: string;
@@ -16,36 +13,48 @@ interface PromptStepProps {
 const PromptStep: React.FC<PromptStepProps> = ({ prompt, setPrompt, setGeneratedImages, setStep }) => {
   const generateImages = () => {
     const fakeImages = [
-      '/api/placeholder/300/400',
-      '/api/placeholder/300/400',
-      '/api/placeholder/300/400',
-      '/api/placeholder/300/400'
+      'https://via.placeholder.com/300x400',
+      'https://via.placeholder.com/300x400',
+      'https://via.placeholder.com/300x400',
+      'https://via.placeholder.com/300x400'
     ];
     setGeneratedImages(fakeImages);
     setStep(1);
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-3xl sm:text-4xl">Generate Human Influencer</CardTitle>
-        <CardDescription>Enter a prompt to generate your AI influencer</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="prompt">Prompt</Label>
-          <Input
-            id="prompt"
-            placeholder="Enter prompt or upload image"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
+    <section className="text-center mb-16 relative mt-20  py-24">
+      <h2 className="text-6xl font-bold mb-4">Generate Virtual Infulencer</h2>
+      <p className="text-xl mb-8 text-gray-400">Create realistic avatars using simple prompts.</p>
+      <div className="flex max-w-xl mx-auto">
+        <div className="flex-grow bg-zinc-900 rounded-l-full p-3 flex items-center">
+          <Sparkles className="text-gray-400 mr-2" />
+          <input
+            type="text"
+            placeholder="Try prompt like 'futuristic city'"
+            className="bg-transparent w-full focus:outline-none text-sm"
           />
         </div>
-        <Button onClick={generateImages} className="w-full">
-          Generate Images <Sparkles className="ml-2" />
-        </Button>
-      </CardContent>
-    </Card>
+        <button className="bg-yellow-400 text-black font-bold py-3 px-6 rounded-r-full text-sm" onClick={generateImages}>
+          Create
+        </button>
+      </div>
+      <div className="absolute -top-12 -left-4 rotate-12">
+        <Image src="/api/placeholder/100/100" alt="Interior design" width={100} height={100} className="w-24 h-24" />
+      </div>
+      <div className="absolute top-0 right-8 -rotate-12">
+        <Image src="/api/placeholder/100/100" alt="Landscape" width={100} height={100} className="w-32 h-24" />
+      </div>
+      <div className="absolute bottom-0 left-16 rotate-6">
+        <Image src="/api/placeholder/100/100" alt="Abstract" width={100} height={100} className="w-24 h-24" />
+      </div>
+      <div className="absolute -bottom-8 right-24 -rotate-6">
+        <Image src="/api/placeholder/100/100" alt="Car" width={100} height={100} className="w-24 h-16" />
+      </div>
+      <div className="absolute top-1/2 right-0 rotate-12">
+        <Image src="/api/placeholder/100/100" alt="Architecture" width={100} height={100} className="w-24 h-24" />
+      </div>
+    </section>
   );
 };
 

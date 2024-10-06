@@ -30,16 +30,8 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center pt-4 mb-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            AI Influencer Generator
-          </h1>
-          <Button onClick={handleLogout} variant="outline">
-            Logout
-          </Button>
-        </div>
 
         <Tabs value={activeTab} className="w-full mb-6">
           <TabsContent value="create">
