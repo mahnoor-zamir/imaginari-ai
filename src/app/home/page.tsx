@@ -45,9 +45,11 @@ export default function HomePage() {
 
           <TabsContent value="influencers">
             <InfluencerList 
-              influencers={influencers} 
+              influencers={influencers}
               setActiveInfluencer={setActiveInfluencer} // Pass setActiveInfluencer instead of setGallery
-            />
+                gallery={gallery} 
+                setGallery={setGallery} 
+              />
           </TabsContent>
 
           <TabsContent value="gallery">
