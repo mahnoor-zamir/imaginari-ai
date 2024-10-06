@@ -41,14 +41,17 @@ const ScenarioStep: React.FC<ScenarioStepProps> = ({
   const paintInfluencer = () => {
     if (!activeInfluencer) return; // Early exit if no active influencer
 
-    const paintedScenario = "/api/placeholder/400/600";
+    const paintedScenario = "https://via.placeholder.com/600x400";
     const newGalleryItem: GalleryItem = {
       influencer: activeInfluencer,
       scenario: paintedScenario,
       prompt: scenarioPrompt || "Image-based scenario",
     };
     setGallery((prevGallery) => [...prevGallery, newGalleryItem]);
-    setStep(5);
+    const currentTab = window.location.pathname.includes("create") ? "create" : "influencer";
+    const nextStep = currentTab === "create" ? 5 : 2;
+    console.log(nextStep)
+    setStep(nextStep);
   };
 
   const selectedImage = activeInfluencer ? activeInfluencer.image : null;
