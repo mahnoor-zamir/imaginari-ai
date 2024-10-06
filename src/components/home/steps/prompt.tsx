@@ -39,20 +39,23 @@ const PromptStep: React.FC<PromptStepProps> = ({ prompt, setPrompt, setGenerated
           Create
         </button>
       </div>
-      <div className="absolute -top-12 -left-4 rotate-12">
-        <Image src="/api/placeholder/100/100" alt="Interior design" width={100} height={100} className="w-24 h-24" />
-      </div>
-      <div className="absolute top-0 right-8 -rotate-12">
-        <Image src="/api/placeholder/100/100" alt="Landscape" width={100} height={100} className="w-32 h-24" />
+      <div className="absolute -top-4 left-16 rotate-12">
+        <Image src="https://via.placeholder.com/300x300" alt="Interior design" width={300} height={300} className="w-24 h-24" />
       </div>
       <div className="absolute bottom-0 left-16 rotate-6">
-        <Image src="/api/placeholder/100/100" alt="Abstract" width={100} height={100} className="w-24 h-24" />
+        <Image src="https://via.placeholder.com/300x300" alt="Abstract" width={300} height={300} className="w-24 h-24" />
+      </div>
+      <div className="absolute bottom-32 left-15 ">
+        <Image src="https://via.placeholder.com/400x300" alt="Abstract" width={400} height={300} className="w-32 h-24" />
+      </div>
+      <div className="absolute top-0 right-8 -rotate-12">
+        <Image src="https://via.placeholder.com/400x300" alt="Landscape" width={400} height={300} className="w-32 h-24" />
       </div>
       <div className="absolute -bottom-8 right-24 -rotate-6">
-        <Image src="/api/placeholder/100/100" alt="Car" width={100} height={100} className="w-24 h-16" />
+        <Image src="https://via.placeholder.com/300x200" alt="Car" width={300} height={200} className="w-24 h-16" />
       </div>
       <div className="absolute top-1/2 right-0 rotate-12">
-        <Image src="/api/placeholder/100/100" alt="Architecture" width={100} height={100} className="w-24 h-24" />
+        <Image src="https://via.placeholder.com/300x300" alt="Architecture" width={300} height={300} className="w-24 h-24" />
       </div>
     </section>
   );
