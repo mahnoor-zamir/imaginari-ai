@@ -1,8 +1,14 @@
 // components/home/steps/InfluencerSavedStep.tsx
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Paintbrush, Camera } from 'lucide-react';
+import { Paintbrush, Camera } from "lucide-react";
 
 interface InfluencerSavedStepProps {
   activeInfluencer: {
@@ -13,33 +19,40 @@ interface InfluencerSavedStepProps {
   resetApp: () => void;
 }
 
-const InfluencerSavedStep: React.FC<InfluencerSavedStepProps> = ({ activeInfluencer, setStep, resetApp }) => {
+const InfluencerSavedStep: React.FC<InfluencerSavedStepProps> = ({
+  activeInfluencer,
+  setStep,
+  resetApp,
+}) => {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-3xl sm:text-4xl">Influencer Saved!</CardTitle>
-        <CardDescription>Your new AI influencer has been created</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {activeInfluencer ? ( // Conditional rendering based on activeInfluencer
-          <div className="flex items-center space-x-4">
-            <img src={activeInfluencer.image} alt={activeInfluencer.name} className="w-32 h-auto rounded-lg" />
-            <div>
-              <h3 className="text-2xl font-bold">{activeInfluencer.name}</h3>
-              <p className="text-gray-400">Ready for new scenarios</p>
-            </div>
+    <section className="text-center mb-16 relative mt-20">
+      <h3 className="text-4xl font-bold mb-2">
+        {activeInfluencer?.name.toUpperCase()} 🎉
+      </h3>
+      {activeInfluencer ? ( // Conditional rendering based on activeInfluencer
+        <div className="relative flex flex-col items-center space-y-4">
+          <img
+            src={activeInfluencer.image}
+            alt={activeInfluencer.name}
+            className="w-96 h-auto rounded-lg" // Increased image size
+          />
+          <div className="absolute bottom-4 w-full px-4 flex flex-col items-center">
+            <Button
+              onClick={() => setStep(4)}
+              className="w-80 mb-4"
+              disabled={!activeInfluencer}
+            >
+              Paint in New Scenario <Paintbrush className="ml-2" />
+            </Button>
+            <Button onClick={resetApp} variant="outline" className="w-80">
+              Create Another Influencer <Camera className="ml-2" />
+            </Button>
           </div>
-        ) : (
-          <p className="text-gray-400">No influencer selected.</p> // Handle null case
-        )}
-        <Button onClick={() => setStep(4)} className="w-full" disabled={!activeInfluencer}>
-          Paint in New Scenario <Paintbrush className="ml-2" />
-        </Button>
-        <Button onClick={resetApp} variant="outline" className="w-full">
-          Create Another Influencer <Camera className="ml-2" />
-        </Button>
-      </CardContent>
-    </Card>
+        </div>
+      ) : (
+        <p className="text-gray-400">No influencer selected.</p> // Handle null case
+      )}
+    </section>
   );
 };
 
